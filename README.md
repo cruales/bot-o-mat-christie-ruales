@@ -71,7 +71,21 @@ I used Java to create the command-line application so simply enter the following
 javac Robot.java
 java Robot
 ```
-Once the program is run it will first prompt the user with how many robots they would like to create. The user should then enter an integer number indicating the number of robots. Using the number the user inputted, the program will prompt the user to enter a name and robot type for each robot. Between each new robot creation the program tells the user to wait a moment before entering the next robot's information. This ensures enough time has passed for the previous robot to complete all of their assigned tasks and remove it from the list of tasks. Finally, after the last robot has been created the program asks the user if they would like to terminate the program. In order to acheive the delay from when a robot is assigned a task to when they actually complete it I used the Timer class built into Java. This meant there is a background thread that is left open to run different tasks. I wanted to leave the Timer thread open so that each robot has enough time to complete their tasks so only after the user indicates they would like the end the program do I actually close the thread. According to java docs for the Timer class, the background thread eventually closes so it has graceful termination but only after an arbitrarily long time so this prompt just speeds that up therfore providing a better experience for the user.
+Once the program is run it will first prompt the user with how many robots they would like to create. The user should then enter an integer number indicating the number of robots. Using the number the user inputted, the program will prompt the user to enter a name and robot type for each robot. Between each new robot creation the program tells the user to wait a moment before entering the next robot's information. This ensures enough time has passed for the previous robot to complete all of their assigned tasks and remove it from the list of tasks. In my own testing, given that the longest task takes 20 seconds I would wait that much time before entering the next robot's information. Finally, after the last robot has been created the program asks the user if they would like to terminate the program. In order to acheive the delay from when a robot is assigned a task to when they actually complete it I used the Timer class built into Java. This meant there is a background thread that is left open to run different tasks. I wanted to leave the Timer thread open so that each robot has enough time to complete their tasks so only after the user indicates they would like the end the program do I actually close the thread. According to java docs for the Timer class, the background thread eventually closes so it has graceful termination but only after an arbitrarily long time so this prompt just speeds that up therfore providing a better experience for the user.
+
+## Example of program being run with user input
+```
+How many robots would you like to create?
+(user) 2
+Enter robot 1's name and type: (user) Larry, bipedal
+Completing Larry's tasks. Please wait a moment before continuing.
+Enter robot 2's name and type: (user) Christie, arachnid
+Completing Christie's tasks. Please wait a moment before continuing.
+Would you like to terminate the program? (Enter yes or no)
+(user) yes
+Larry has completed the following tasks: [sweep the house, make a sammich, do the laundry, give the dog a bath, wash the car]
+Christie has completed the following tasks: [do the dishes, mow the lawn, take out the recylcing, bake some cookies, rake the leaves]
+```
 
 ## Assumptions and Limitations
 I made a number of assumptions when creating this application. They are as follows:
