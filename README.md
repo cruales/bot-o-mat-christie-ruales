@@ -65,6 +65,22 @@ Tasks have a description and an estimated time to complete.
   AERONAUTICAL: 'Aeronautical'
 }
 ```
+## How to run the program
+I used Java to create the command-line application so simply enter the following commands to compile and run the program:
+```
+javac Robot.java
+java Robot
+```
+Once the program is run it will first prompt the user with how many robots they would like to create. The user should then enter an integer number indicating the number of robots. Using the number the user inputted, the program will prompt the user to enter a name and robot type for each robot. Between each new robot creation the program tells the user to wait a moment before entering the next robot's information. This ensures enough time has passed for the previous robot to complete all of their assigned tasks and remove it from the list of tasks. Finally, after the last robot has been created the program asks the user if they would like to terminate the program. In order to acheive the delay from when a robot is assigned a task to when they actually complete it I used the Timer class built into Java. This meant there is a background thread that is left open to run different tasks. I wanted to leave the Timer thread open so that each robot has enough time to complete their tasks so only after the user indicates they would like the end the program do I actually close the thread. According to java docs for the Timer class, the background thread eventually closes so it has graceful termination but only after an arbitrarily long time so this prompt just speeds that up therfore providing a better experience for the user.
+
+## Assumptions and Limitations
+I made a number of assumptions when creating this application. They are as follows:
+- The eta on each task is in milliseconds
+- When all tasks are completed, the task list reinitilaizes for the following robots
+- The input for the number of robots the user wishes to create will always be a whole number in the form of 1, 2, etc.
+- The input for robot information will always be in the form 'name, type' or 'type, name' (will always include a comma separating the two fields)
+
+Furthermore, there are limitations to the program. Making assumptions about user input in a command-line application leaves a lot of room for error. Ideally, a graphical user interface would solve these problems by restricting what the user can actually enter. A GUI would also provide a nice way to display the information which would allow for a more pleasant user interface. In addition, while the program prompts the user to wait a moment before entering the next line of input, there is nothing in the code to actually enforce that. 
 
 ## Features to add once the core functionality is complete
 Be creative and have fun! Use this list or create your own features.
@@ -77,3 +93,4 @@ Be creative and have fun! Use this list or create your own features.
 ## Authors
 - Scott Hoffman <https://github.com/scottshane>
 - Olivia Osby <https://github.com/oosby>
+- Additions made by: Christie Ruales <https://github.com/cruales>
